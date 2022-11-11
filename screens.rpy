@@ -289,14 +289,15 @@ screen navigation():
 
     vbox:
         style_prefix "navigation"
-        xalign 0.5
+
+        xpos gui.navigation_xpos
         yalign 0.5
 
         spacing gui.navigation_spacing
 
         if main_menu:
-            xalign 0.5
-            textbutton _("Играть") action Start()
+
+            textbutton _("Начать") action Start()
 
         else:
 
@@ -313,7 +314,7 @@ screen navigation():
             textbutton _("Завершить повтор") action EndReplay(confirm=True)
 
         elif not main_menu:
-            xpos gui.navigation_xpos
+
             textbutton _("Главное меню") action MainMenu()
 
         textbutton _("Об игре") action ShowMenu("about")
@@ -575,7 +576,7 @@ style about_label_text:
 ## как они почти одинаковые, оба реализованы по правилам третьего экрана —
 ## file_slots.
 ##
-## https://www.renpy.org/doc/html/screen_special.html#save
+## https://www.renpy.org/doc/html/screen_special.html#save 
 
 screen save():
 
