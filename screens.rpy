@@ -284,37 +284,33 @@ style quick_button_text:
 ##
 ## Этот экран включает в себя главное и игровое меню, и обеспечивает навигацию к
 ## другим меню и к началу игры.
+## xAlign нужен для того, чтобы не ломать логику навигации
 
-screen navigation():
+screen navigation(xAlign=1):
 
     vbox:
         style_prefix "navigation"
-
-        xpos gui.navigation_xpos
+        xalign xAlign
         yalign 0.5
 
         spacing gui.navigation_spacing
+        if xAlign == 1:
+            xpos gui.navigation_xpos
 
         if main_menu:
-
-            textbutton _("Начать") action Start()
-
+            textbutton _("Играть") action Start()
         else:
-
+            xalign 1
             textbutton _("История") action ShowMenu("history")
-
             textbutton _("Сохранить") action ShowMenu("save")
 
         textbutton _("Загрузить") action ShowMenu("load")
-
         textbutton _("Настройки") action ShowMenu("preferences")
 
         if _in_replay:
-
             textbutton _("Завершить повтор") action EndReplay(confirm=True)
 
         elif not main_menu:
-
             textbutton _("Главное меню") action MainMenu()
 
         textbutton _("Об игре") action ShowMenu("about")
@@ -362,7 +358,7 @@ screen main_menu():
 
     ## Оператор use включает отображение другого экрана в данном. Актуальное
     ## содержание главного меню находится на экране навигации.
-    use navigation
+    use navigation(0.5)
 
     if gui.show_name:
 
@@ -468,7 +464,7 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
                     transclude
 
-    use navigation
+    use navigation()
 
     textbutton _("Вернуться"):
         style "return_button"
@@ -576,7 +572,7 @@ style about_label_text:
 ## как они почти одинаковые, оба реализованы по правилам третьего экрана —
 ## file_slots.
 ##
-## https://www.renpy.org/doc/html/screen_special.html#save 
+## https://www.renpy.org/doc/html/screen_special.html#save
 
 screen save():
 
