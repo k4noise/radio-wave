@@ -161,8 +161,11 @@ label start:
 
         label good_continue:
             "Хороший конец"
+            jump end
 
         label bad_continue:
             "Плохой конец"
+            jump end
 
-    return
+        label end:
+            return
