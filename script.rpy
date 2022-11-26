@@ -2,9 +2,9 @@
 
 # Определение персонажей игры.
 define a = Character('Артём', color="#c8ffc8")
-define n = Character('Никита', color="#23f5")
-define asy = Character('Ася', color="#64f5")
-define p = Character('Полина', color="#643")
+define n = Character('Никита', color="#ffff00")
+define asy = Character('Ася', color="#42aaff")
+define p = Character('Полина', color="#8b00ff")
 
 # Вместо использования оператора image можете просто
 # складывать все ваши файлы изображений в папку images.
