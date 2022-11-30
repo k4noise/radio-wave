@@ -295,7 +295,8 @@ label start:
             show artem at left with dissolve
             a "Не попробуешь - не узнаешь."
             "И я написал. Самая тяжелая минута ожидания, после прочтения сообщения в моей жизни."
-            show polina at right with dissolve
+            show polina at right with dissolve:
+                zoom 0.85
             p "Да, почему нет. Звучит интересно, а если учесть, что за сюжетную составляющую буду отвечать я, то может выйдет не так плохо."
             a "Тогда может встретимся завтра всей компанией для небольшого брейншторма?"
             p "Договорились"
@@ -324,11 +325,12 @@ label start:
 
 
         label meet_polina_with_write:
-            show artem at left with dissolve
-            show nikita at center with dissolve:
+            show artem at left with dissolve:
                 zoom 0.85
-            show asya at right with dissolve:
-                zoom 0.8
+            show nikita at right with dissolve:
+                zoom 0.75
+            show asya at center with dissolve:
+                zoom 0.7
             n "Ты что-то рано"
             a "Ну значит вместе встретим Полину и Асю, давай собирайся"
             n "А не слишком ты активный сегодня?"
@@ -341,7 +343,13 @@ label start:
             a "Неа"
             n "Неа"
             a "Я написал, что мы стоим компанией из трех человек прямо у остановки, думаю найдет"
-            show polina at center with dissolve
+            hide asya with dissolve
+            show asya at center with dissolve:
+                zoom 0.75
+                xalign 0.33
+            show polina at center with dissolve:
+                zoom 0.75
+                xalign 0.68
             "И вот выходит она. Я многое ожидал от нее: крепкие объятия сразу при встрече, повышенный тон голоса, возможно даже снисходительность и высокомерность общения."
             "Но нет. Мы слышим робкое “П-привет” и сразу понимаем, что некоторые люди совершенно отличаются от своего представления в интернете. "
             n "Это точно она?"
@@ -356,11 +364,15 @@ label start:
 
         label meet_polina:
             show nikita at left with dissolve:
-                zoom 0.85
+                zoom 0.75
             show asya at center with dissolve:
-                zoom 0.8
-            show polina at center with dissolve
-            show artem at right with dissolve
+                zoom 0.7
+                xalign 0.33
+            show polina at center with dissolve:
+                zoom 0.7
+                xalign 0.68
+            show artem at right with dissolve:
+                zoom 0.85
             n "Наконец-то пришел."
             a "Да вы все в сборе уже, извините, что опоздал."
             n "Ну Полину ты уже знаешь, однако лично я понял, что похоже не так уже и хорошо."
