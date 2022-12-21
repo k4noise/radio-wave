@@ -5,13 +5,13 @@ define p = Character('Полина', color="#8b00ff")
 define v = Character('Витя', color="#ffa500")
 
 default is_stay_home = True
-default write_today = True
+default is_write_today = True
 default is_retort = True
 default is_no_matter = True
 
 label start:
 
-    scene
+    scene artem_room
 
     "8:30. Первые мысли после пробуждения сразу врезаются в голову с неистовой скоростью. Пара секунд и приходит осознание, что начался ещё один день. Снова."
     "*звон будильника*"
@@ -271,7 +271,7 @@ label start:
                     jump writetoday
 
         label postpone:
-            $write_today = False
+            $is_write_today = False
             hide artem with dissolve
             scene thinking_in_room
             "Сегодня произошло и так много событий. Думаю, это может подождать. Приду и рухну в постель, а дела не такие уж и срочные."
@@ -330,7 +330,7 @@ label start:
             hide artem with dissolve
             "Ася попросила взять меня треногу, так как оставила свою в том городе. Полностью собравшись, я пулей вылетел до Никиты."
             scene city
-            if write_today:
+            if is_write_today:
                 jump meet_polina_with_write
             else:
                 jump meet_polina
@@ -540,12 +540,12 @@ label start:
             asy "А кто еще?"
             a "Кажется ты застряла в прошлом. Мне уже не нужно подтирать сопли после любой мелочи."
             asy "Как раз таки наоборот. Да может ты и вымахал за эти несколько лет, но в душе совсем ребенок."
-            if is_stay_home and write_today:
+            if is_stay_home and is_write_today:
                 asy "Хотя в последнее время замечаю, что ты начинаешь тянуться к людям, а не избегать их, как ребенок. Даже сам Полине написал."
                 a "Мне просто показалось это интересной мыслью"
                 asy "Можешь отрицать сколько угодно, но ты меняешься. Меня это радует"
                 jump retort
-            elif not is_stay_home and not write_today:
+            elif not is_stay_home and not is_write_today:
                 a "Ты все также избегаешь людей и возможностей. Не выходишь из зоны комфорта."
                 jump retort
             jump talk_with_asya_at_home
@@ -779,10 +779,10 @@ label start:
                 "Начать рассуждать":
                     jump reason
                 "Не придавать значения":
-                    jump mo_matter
+                    jump no_matter
 
         label reason:
-            is_no_matter = False
+            $is_no_matter = False
             a "Не могло же это само отправиться нескольким людям без нашего ведома."
             a "Ася, к примеру взять тебя, ты говорила, что хотела бы взяться за какие то перспективные проекты, может скидывала кому-то игру в качестве резюме?"
             asy "Ты правда думаешь, что я бы поступила подобным образом? Не спросив у вас?"
@@ -843,9 +843,9 @@ label start:
             "Он начал активно вести сообщество, где подробнее говорил о нашей игре, назначил дату выхода, и у нас даже появилось несколько фанатов. "
             "В основном это люди со школы, но хоть кто-то кроме нас ждал её. Ася создала страницу в магазине Steam, а через 30 дней после заявления, нам одобрили разрешение на загрузку игры."
             "Про инцидент с Витей как-то все благополучно забыли, ведь во всяком случае мы спокойно могли предоставить доказательства на правообладание."
-            if (is_agree + is_no_matter + is_retort + is_stay_home) >= 2:
+            if (is_write_today + is_no_matter + is_retort + is_stay_home) >= 2:
                 jump good_continue
-            else
+            else:
                 jump bad_continue
 
 
